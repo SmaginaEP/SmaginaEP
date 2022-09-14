@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- голова html-страницы, её содержимое не видно -->
+    <meta charset="UTF-8"> <!-- Атрибут charset Указывает кодировку документа -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Этот атрибут определяет имя уровня документа метаданных -->
+    <title>Резюме</title> <!-- название страницы -->
+    <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet"> 
+</head>
+<body>
+    <header>
+    <!-- лого сайта -->
+        <div>
+            <a href="index.html">
+                <img src = "..\img\logo.jpg" height="120" alt="Логотип" width="120" >
+            </a>
+        </div>
+    <!-- меню сайта -->
+        <nav>
+            <ul>
+                <li><a href="../index.html">О себе</a></li>
+                <li><a href="../index.html#comps">Что я умею</a></li>
+                <li><a href="resume">Резюме</a></li>
+                <li><a href="portfolio.html">Мои работы</a></li>
+                <li><a href="contacts.html">Контакты</a></li>
+                <li><a href="JS.html">Задания JS</a></li>
+            </ul>
+        </nav>
+    <!-- заголовок сайта -->
+        <div>
+            <h1>Веб-технологии</h1> 
+            <h3>Университет "Дубна"</h3>
+        </div>
+    </header>
+    <main>
+    <!-- основное содержание страницы -->
+       <table border="2">
+            <caption>Опыт работы</caption>
+            <thead>
+              <tr>
+                <th>Дата</th>
+                <th>Место работы (учёбы), должность</th>
+                <th>Должностные обязанности</th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td bgcolor="#FF5733">2012-2016</td>
+                    <td rowspan="2">Университет "Дубна"</td>
+                    <td>Обучение по направлению "Бизнес-информатика"</td>
+                </tr>
+                <tr>
+                    <td rowspan="2">2016-2018</td>
+                    <td>Обучение по направлению "Системный анализ и управление"</td>
+                </tr>
+                <tr>
+                    <td>ООО «Агава-Дубна» <br>Специалист технической поддержки хостинга</td>
+                    <td>
+                        <ul>
+                            <li>Поддержка и мониторинг обслуживаемых компанией серверов </li>
+                            <li>Взаимодействие с клиентами, работа с тикетами</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2017 - наст.вр.</td>
+                    <td colspan="2">Университет "Дубна" <br>Инженер Библиотечной системы, ассистент преподавателя </td>
+                </tr>
+            </tbody>
+       </table>
+    </main>
+    <footer>
+    <!-- подвал страницы -->
+        <div>
+            &#10084;
+            &#9883;
+        </div>
+        <div>Сайт разработан SEP, Copyright © 2022</div>
+    </footer>
+</body>
+</html>
+
