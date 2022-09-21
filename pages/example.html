@@ -6,12 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Этот атрибут определяет имя уровня документа метаданных -->
     <title>Пример страницы</title> <!-- название страницы -->
+    <link rel="stylesheet" href="../style/style.css"> <!-- стили -->
     <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet"> 
 </head>
 <body>
-    <header>
-    <!-- лого сайта -->
-        <div>
+    <header class="header">
+        <!-- лого сайта -->
+            <div class="header_logo">
             <a href="index.html">
                 <img src = "..\img\logo.jpg" height="120" alt="Логотип" width="120" >
             </a>
@@ -34,13 +35,14 @@
         </div>
     </header>
     <main>
+        <div class="wrapper">
     <!-- основное содержание страницы -->
         <img src="../img/example.jpg" alt="Пример картинки">    
         <div>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti optio fuga cumque libero architecto suscipit expedita facilis beatae officiis cupiditate minima explicabo reiciendis repellendus, doloribus, quo autem voluptatibus quod assumenda?
         </div>
-    </main>
-    <footer>
+   </div> </main>
+    <footer  class="footer">
     <!-- подвал страницы -->
         <div>
             &#10084;

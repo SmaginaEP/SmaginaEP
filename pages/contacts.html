@@ -6,12 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Этот атрибут определяет имя уровня документа метаданных -->
     <title>Пример страницы</title> <!-- название страницы -->
+    <link rel="stylesheet" href="../style/style.css"> <!-- стили -->
     <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet"> 
 </head>
 <body>
-    <header>
-    <!-- лого сайта -->
-        <div>
+    <header class="header">
+        <!-- лого сайта -->
+            <div class="header_logo">
             <a href="index.html">
                 <img src = "..\img\logo.jpg" height="120" alt="Логотип" width="120" >
             </a>
@@ -35,6 +36,7 @@
     </header>
     <main>
     <!-- основное содержание страницы -->
+    <div class="wrapper">
     <section class="items">
         <h3>Я в социальных сетях:</h3> 
         <div class="contact_icons">
@@ -53,9 +55,9 @@
         <h3 class="h3_tel">Мой номер телефона:</h3>
         <div>999-999-9999</div>
     </section>
-
+    </div>
     </main>
-    <footer>
+    <footer  class="footer">
     <!-- подвал страницы -->
         <div>
             &#10084;

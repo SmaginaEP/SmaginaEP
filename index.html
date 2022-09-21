@@ -6,14 +6,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Этот атрибут определяет имя уровня документа метаданных -->
     <title>Главная страница</title> <!-- название страницы -->
+    <!-- <link rel="stylesheet" href="style/reset.css"> стили -->
+    <link rel="stylesheet" href="style/style.css"> <!-- стили -->
     <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet"> 
 </head>
 <body>
-    <header>
+    <header class="header">
     <!-- лого сайта -->
-        <div>
+        <div class="header_logo">
             <a href="index.html">
-                <img src = "img\logo.jpg" height="120" alt="Логотип" width="120" >
+                <img src = "img\logo.jpg" alt="Логотип" class="logo">
             </a>
         </div>
     <!-- меню сайта -->
@@ -35,6 +37,7 @@
     </header>
     <main>
     <!-- основное содержание страницы -->
+        <div class="wrapper">
         <section>
     <!-- изображение, заголовок, текст -->
             <img src="img/sep.JPG" alt="Смагина Е.П." width="1000">
@@ -93,8 +96,9 @@
                 Узнать
             </button>
         </section>
+    </div>
     </main>
-    <footer>
+    <footer class="footer">
     <!-- подвал страницы -->
         <div>
             &#10084;
@@ -104,4 +108,3 @@
     </footer>
 </body>
 </html>
-
