@@ -107,7 +107,7 @@ body {
 
     --element-color: #A67525; 
      --background-color: ##B6ADEC;
-     --akcent-color: #FFF972	
+     --akcent-color: #FFF972
    /* */
 }
 main {
@@ -159,4 +159,28 @@ h3 {
     border-radius: 40%;  /* Скругление углов изображения */
     border: 5px solid var(--element-color); /* Цвет и ширину рамки */
     box-shadow: 2px 1px 5px var(--akcent-color); /* Цвет и размер тени */
+}
+.main1{
+    
+    max-width: 100%;
+    background-color: var(--element-color);
+   
+}
+.htmltegs {
+    max-width: 100%;
+    background-color:rgb(139, 139, 196);
+    /* margin-bottom: 20px; */
+    text-align: center;
+}
+.list {
+    /* padding-top: 200px; */
+    max-width: 100%;
+    background-color: var(--element-color);
+    /* margin-bottom: 20px; */
+}
+.button {
+    max-width: 100%;
+    background-color:rgb(139, 139, 196);
+    /* margin-bottom: 20px;
+    text-align: center; */
 }
