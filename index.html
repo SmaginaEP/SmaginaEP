@@ -12,48 +12,63 @@
 </head>
 <body>
     <header class="header">
+        <div class="menu">
     <!-- лого сайта -->
-        <div class="header_logo">
-            <a href="index.html">
-                <img src = "img\logo.jpg" alt="Логотип" class="logo">
-            </a>
-        </div>
+            <div class="header_logo">
+                <a href="index.html">
+                    <img src = "img\logo.jpg" alt="Логотип" class="logo">
+                </a>
+            </div>
     <!-- меню сайта -->
-        <nav>
-            <ul>
-                <li><a href="index.html">О себе</a></li>
-                <li><a href="index.html#comps">Что я умею</a></li>
-                <li><a href="pages/resume.html">Резюме</a></li>
-                <li><a href="pages/portfolio.html">Мои работы</a></li>
-                <li><a href="pages/contacts.html">Контакты</a></li>
-                <li><a href="pages/JS.html">Задания JS</a></li>
-            </ul>
-        </nav>
+            <nav  class="menu_nav">
+                <ul>
+                    <li><a href="index.html">О себе</a></li>
+                    <li><a href="index.html#comps">Что я умею</a></li>
+                    <li><a href="pages/resume.html">Резюме</a></li>
+                    <li><a href="pages/portfolio.html">Мои работы</a></li>
+                    <li><a href="pages/contacts.html">Контакты</a></li>
+                    <li><a href="pages/JS.html">Задания JS</a></li>
+                </ul>
+            </nav>
+        </div>
     <!-- заголовок сайта -->
-        <div>
+        <div class="title">
             <h1>Веб-технологии</h1> 
             <h3>Университет "Дубна"</h3>
         </div>
     </header>
     <main>
     <!-- основное содержание страницы -->
-        <div class="wrapper">
-        <section class="main1">
+        <section class="">
     <!-- изображение, заголовок, текст -->
-            <img src="img/sep.JPG" alt="Смагина Е.П." width="1000">
+        <div class="wrapper main1">
+            
+            <div class="desk">
             <h2>Смагина Елена Павловна</h2>
             <p>Преподаватель в университете "Дубна"</p>
+            <p>
+                А теперь держи шутку! 
+            </p>
+            <p>
+                Программирование состоит на 10% из строгой науки, на 20% из смекалки и вдохновения, и на 70% из попыток совместить первое со вторым.
+            </p>
+            </div>
+            <img src="img/sep.JPG" alt="Смагина Е.П." class="main_foto">
+        
+        </div>
         </section>
-        <section class="htmltegs">
+        <section class="htmltegs brown">
     <!-- Заголовок, 3 или более изображений, под каждым заголовок -->
+    <div class="wrapper">
         <a name="comps"></a>
-            <div>
-                <h3>Что я умею</h3>
-                <div>
+            
+                <h2>Что я умею</h2>
+              <div class="html_cards">  
+                <div class="cards">
                     <img src="img/figma.jpg" width="70">
                     <h4>Figma</h4>
                 </div>
-                <div>
+                <div class="cards">
                     <img src="img/ps.png" width="60">
                     <h4>Ps</h4> 
                 </div>
@@ -70,9 +85,12 @@
                     <h4>css3</h4>
                 </div>
             </div>
+            </div>
         </section>
-        <section class="list">
+        <section class="">
     <!-- 2 списка -->
+    <div class="wrapper lists">
+            <div class="list">
             <h3>Мои сильные качества</h3>
             <ul>
                 <li>Коммуникабельность</li>
@@ -80,6 +98,8 @@
                 <li>Вежливость</li>
                 <li>Принципиальность</li>
             </ul>
+            </div>
+            <div class="list">
             <h3>Список жизненных целей</h3>
             <ol>
                 <li>Стать достаточно хорошим родителем</li>
@@ -87,20 +107,23 @@
                 <li>Поддерживать отличное здоровье</li>
                 <li>Работать на высокооплачиваемой должности</li>
             </ol>
+    </div></div>
         </section>
-        <section class="button">
+        <section class="button brown">
+            <div class="wrapper">
     <!-- заголовок,  случайный текст, кнопка -->
-            <h3>Самая важная информация</h3>
+            <h2>Самая важная информация</h2>
             <p>Для того, чтобы ознакомиться с <b>самой важной</b> информацией нажмите кнопку ниже</p>
             <button onclick="alert('Ты просто супер!');">
                 Узнать
             </button>
+        </div>
         </section>
-    </div>
+    
     </main>
     <footer class="footer">
     <!-- подвал страницы -->
-        <div>
+        <div class="footer_icons">
             &#10084;
             &#9883;
         </div>

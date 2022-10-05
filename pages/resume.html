@@ -11,14 +11,15 @@
 </head>
 <body>
     <header class="header">
+        <div class="menu">
         <!-- лого сайта -->
             <div class="header_logo">
             <a href="index.html">
-                <img src = "..\img\logo.jpg" alt="Логотип"  class="logo" >
+                <img src = "..\img\logo.jpg" alt="Логотип"  class="logo">
             </a>
         </div>
     <!-- меню сайта -->
-        <nav>
+        <nav  class="menu_nav">
             <ul>
                 <li><a href="../index.html">О себе</a></li>
                 <li><a href="../index.html#comps">Что я умею</a></li>
@@ -28,8 +29,9 @@
                 <li><a href="JS.html">Задания JS</a></li>
             </ul>
         </nav>
+    </div>
     <!-- заголовок сайта -->
-        <div>
+        <div  class="title">
             <h1>Веб-технологии</h1> 
             <h3>Университет "Дубна"</h3>
         </div>
@@ -38,7 +40,7 @@
     <!-- основное содержание страницы -->
     <div class="wrapper">
        <table border="2">
-            <caption>Опыт работы</caption>
+            <caption><h2>Опыт работы</h2></caption>
             <thead>
               <tr>
                 <th>Дата</th>
@@ -48,16 +50,16 @@
             </thead>
             <tbody>
                 <tr>
-                    <td bgcolor="#FF5733">2012-2016</td>
+                    <td class="browny">2012-2016</td>
                     <td rowspan="2">Университет "Дубна"</td>
                     <td>Обучение по направлению "Бизнес-информатика"</td>
                 </tr>
                 <tr>
-                    <td rowspan="2">2016-2018</td>
+                    <td class="browny" rowspan="2">2016-2018</td>
                     <td>Обучение по направлению "Системный анализ и управление"</td>
                 </tr>
                 <tr>
-                    <td>ООО «Агава-Дубна» <br>Специалист технической поддержки хостинга</td>
+                    <td class="not_first">ООО «Агава-Дубна» <br>Специалист технической поддержки хостинга</td>
                     <td>
                         <ul>
                             <li>Поддержка и мониторинг обслуживаемых компанией серверов </li>
@@ -66,7 +68,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>2017 - наст.вр.</td>
+                    <td class="browny">2017 - наст.вр.</td>
                     <td colspan="2">Университет "Дубна" <br>Инженер Библиотечной системы, ассистент преподавателя </td>
                 </tr>
             </tbody>
@@ -74,7 +76,7 @@
     </div></main>
     <footer  class="footer">
     <!-- подвал страницы -->
-        <div>
+        <div class="footer_icons">
             &#10084;
             &#9883;
         </div>
