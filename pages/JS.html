@@ -41,12 +41,12 @@
         <section class="items">
             
             <form action="" method="get" id="form1" onsubmit="return checkForm(this)">
-                <div class="form-div" id="svaz1">
-                    <div>Как Вам удобно получить ответ:</div>
+                <fieldset class="form-div" id="svaz1">
+                    <legend>Как Вам удобно получить ответ:</legend>
                     <label for=""><input type="radio" name="svaz" id="posta" value="по почте" > по почте </label><br>
                     <label for=""><input type="radio" name="svaz" id="tele" value="по телефону" > по телефону </label><br>
                     <label for=""><input type="radio" name="svaz" id="nootv" value="не нужно отвечать" > не надо отвечать </label><br>
-                </div>
+                </fieldset>
                         
                 <div class="form-div ">
                     <label for="theme">Укажите тему вопроса</label><br>
@@ -57,12 +57,12 @@
                     </select>
                 </div >
 
-                <div class="form-div">
-                    <div> И еще один вопрос?</div>
+                <fieldset class="form-div">
+                    <legend> И еще один вопрос?</legend>
                     <label for="checkbox1"><input type="checkbox" name="vopros" id="checkbox1" value="может так">может так</label><br>
                     <label for="checkbox2"><input type="checkbox" name="" id="checkbox2">или не так</label><br>
                     <label for="checkbox3"><input type="checkbox" name="" id="checkbox2">иначе</label><br>
-                </div>
+                </fieldset>
                     
                 <div class="form-div flex-row">
                     <label for="name">Ваше имя</label>
