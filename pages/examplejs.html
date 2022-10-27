@@ -18,7 +18,7 @@
             
         }}
       </script>
-
+<!-- 9 обр. через id без заданного параметра  -->
 </script>
 <script>
   function d() {
@@ -28,13 +28,8 @@
   }
 }
 </script>
-<script> 
-function c(){
-  var element = document.getElementById("text");
-  element.className = "bigText";
-  }
-     </script> 
- 
+
+<!-- 10 изменение цвета текста -->
 <style>
    .bigText{
        color: brown;
@@ -43,6 +38,8 @@ function c(){
    }
 </style>
     
+
+
 </head>
 <body>
     <!-- 1 выведение в консоль-->
@@ -80,7 +77,7 @@ function c(){
 <!-- 6 по нажатию -->
 <button onclick="alert('!')"> жми </button>
 
-<!-- 7.2 функция и цикл -->
+<!-- 7.1 функция и цикл -->
 <button onclick="f(10)"> жми 1</button>
 
 <!-- 8 обр. через id  -->
@@ -89,19 +86,41 @@ function c(){
     document.getElementById("btn2");
 </script>
 
-
-<button id="btn3" onclick="f(30)"> жми 3</button>
+<!-- 9 обр. через id без заданного параметра -->
+<button id="btn3" onclick="d()"> жми 3</button>
 
 <script>
-    document.getElementById("btn3").addEventListener("onclick",f);
+    document.getElementById("btn3").addEventListener("onclick",d);
 </script>
-
+<!-- 10 изменение цвета текста -->
 <div id="text">
     Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium ex quibusdam quam debitis, eos soluta autem harum iure ut modi doloremque qui assumenda excepturi sint doloribus cumque voluptatibus voluptatum illum.
 </div>
-<button id="btn4" onclick=""> жми цвет</button>
+<button id= "color">поменяй цвет</button>
 <script>
-    document.getElementById("btn4").addEventListener("onclick",c);
+document.getElementById('color').onclick = changeColor; 
+var element = document.getElementById("text");
+var currentColor = "red";
+function changeColor() { 
+        if(currentColor == "red"){ 
+            element.style.color = "green";
+           currentColor = "green";
+        } else {
+            element.style.color = "red";
+           currentColor = "red";
+        } 
+    }
 </script>
+<!-- 11 сткрытие текста -->
+<button onclick="hide('text')">TEST</button>
+<script>
+    function hide(id){
+        elem = document.getElementById(id); //находим блок div по его id, который передали в функцию
+        state = elem.style.display; //смотрим, включен ли сейчас элемент
+        if (state =='') elem.style.display='none'; //если включен, то выключаем
+        else elem.style.display=''; //иначе - включаем
+    }
+    </script>
 </body>
 </html>
+

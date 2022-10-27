@@ -8,6 +8,63 @@
     <title>Задание JS</title> <!-- название страницы -->
     <link rel="stylesheet" href="../style/style.css"> <!-- стили -->
     <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet"> 
+
+    <script> function checkForm(el) {
+        console.log("проверка");
+        // var name = document.getElementById('name').value;
+        var name = el.name.value;
+        console.log(name);
+
+        var svaz = el.svaz.value;
+         console.log(svaz);
+         var vopros = el.vopros.value;
+        console.log(vopros);
+
+
+        // проверка пустых ошибок, переменная вар
+        // var vivod =name + " " + email + " " + tel;
+var fail ="";
+var viv = name.value + " " + email.value + " " + tel.value;
+if (name == "" || email == "" || tel == "") 
+   fail = "Заполните все поля";
+// если заполнены, то правильно ли? проверяем длинну имени (строки свойство лейнс)
+else if(name.length <=1 || name.length >50)
+fail = "Введите корректное имя";
+
+// if(fail != ""){
+//     document.getElementById('error').innerHTML = fail;
+//     return false;
+// } else {
+//     alert ("Данные заполнены некорректно");
+   
+//     return false ;
+// } 
+
+
+if(fail == ""){
+    document.getElementById('vivod').innerText = viv;
+    // document.getElementById('error').innerHTML = fail;
+    // return false;
+} else {
+    // document.getElementById('vivod').innerHTML = viv;
+    document.getElementById('error').innerHTML = fail;
+   
+    // return true ;
+} 
+
+        return false;
+    }
+    </script> 
+    <script>
+        function fanc(){
+  document.getElementById("posta").checked=true;    
+  document.getElementById("tele").checked=true;    
+  document.getElementById("nootv").checked=true;    
+ 
+}
+
+    </script>
+
 </head>
 <body>
     <header class="header">
@@ -104,6 +161,28 @@
         </div>
         <div>Сайт разработан SEP, Copyright © 2022</div>
     </footer>
+
+
+
+    <script>
+        document.getElementById('svaz1').addEventListener("click", hiddenCloseclick);
+          function hiddenCloseclick() {
+          let x = document.getElementById('tel1');
+          let y = document.getElementById('email1');
+          let z = document.getElementById('email1 tel1');
+            
+          if (document.getElementById("posta").checked) {
+             y.style.visibility = "visible";
+        } else {
+           y.style.visibility= "hidden"}
+          
+          
+          if (document.getElementById("tele").checked) {
+             x.style.visibility = "visible";
+        } else {
+           x.style.visibility= "hidden"}
+          }
+    </script>
 </body>
 </html>
 
