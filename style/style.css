@@ -322,3 +322,55 @@ th:first-child, td:first-child {
 }
 
 /* конец стилей для формы */
+
+ /* галерея слайдер */
+ .container {
+    max-width: 1200px;
+    margin: 30px auto;
+    background: var(--element-color);
+    padding: 30px;
+    text-align: center;
+    border-radius: 5%;
+    box-shadow: 1px 1px 6px 3px var(--akcent-color);
+}
+
+.mini{
+    width: 256px;
+}
+
+.slider {
+    border: 2px solid var(--background-color);
+    width: 256px;
+    height: 256px;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.slider-line {
+    width: 1024px;
+    height: 256px;
+    display: flex;
+    background: rgb(102, 3, 122);
+    position: relative; /* относительная позиция, ниже указыватся координаты*/
+    left: 0;
+    transition: all ease 1s; /*Устанавливает эффект перехода между двумя состояниями элемента,*/
+    /* Функция по умолчанию, переход начинается медленно, разгоняется быстро и замедляется в конце. */
+}
+
+button {
+    background: var(--akcent-color);
+    border: 1px solid var(--background-color);
+    border-radius: 4px;
+    padding: 10px 20px;
+    font-size: .9rem;
+}
+
+button:hover {
+    background: var(--background-color);
+}
+
+button:active {
+    background: #000;
+    color: #fff;
+}
+/* конец стилей для галереи */

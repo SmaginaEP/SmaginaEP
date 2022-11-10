@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- голова html-страницы, её содержимое не видно -->
+    <meta charset="UTF-8"> <!-- Атрибут charset Указывает кодировку документа -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Этот атрибут определяет имя уровня документа метаданных -->
+    <title>Задание JS</title> <!-- название страницы -->
+    <link rel="stylesheet" href="../style/style.css"> <!-- стили -->
+    <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet"> 
+
+    <!-- стили изменяемой гистограммы -->
+    <style>
+.chart {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+.chart__title {
+  width: 100%;
+  text-align: center;
+}
+.chart__data {
+  width: 250px;
+}
+.chart__input-group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.chart__input-group:last-of-type {
+  margin-bottom: 95px;
+}
+.input-field {
+  white-space: normal;
+  border: 1px solid #b3d5fc;
+  border-radius: 5px;
+}
+
+.chart__input {
+  width: 60px;
+  margin-right: 5px;
+}
+
+.chart__submit-button {
+  width: 100%;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.chart__canvas-wrapper {
+  height: 250px;
+  border: 1px solid #b3d5fc;
+  border-radius: 5px;
+}
+
+    </style>
+
+</head>
+<body>
+    <header class="header">
+        <div class="menu">
+        </div>
+
+    <!-- заголовок сайта -->
+        <div  class="title">
+            <h1>Пример графиков</h1> 
+        </div>
+    </header>
+    <main>
+ <!--гистограмма-->
+        <section>
+            <h2>Гистограмма</h2>
+            <canvas width="500" height="500" id="canvas"></canvas> 
+
+        <script> 
+            const data = [ 16, 68, 20, 30, 54 ];
+            const canvas = document.getElementById('canvas'); // получаем указатель на холст
+  
+//.getContext возвращает контекст рисования на холсте, или null, если идентификатор контекста не определён.
+//идентификатор "2d", ведет к созданию объекта CanvasRenderingContext2D, представляющий двумерный контекст.
+            let c = canvas.getContext('2d'); 
+
+// рисуем
+            c.fillStyle = "white"; // задаёт цвет или стиль, используемый при заливке фигур. По умолчанию установлено значение #000 (чёрный цвет).
+            c.fillRect(0,0,500,500); // рисует залитый прямоугольник в позиции (x, y), размер которого определяется аргументами width и height, и стиль которого определяется атрибутом fillStyle
+
+// рисуем данные (отобразятся вверх ногами)
+            // c.fillStyle = "green"; 
+            // for(let i=0; i<data.length; i++) { 
+            // let dp = data[i]; 
+            // c.fillRect(25 + i*100, 25, 50, dp*5); 
+            // }
+
+// рисуем данные (Чтобы столбцы шли снизу вверх изменим значение на рассчитанное как высота холста (500) минус высота столбца (dp*5), а затем дополнительно вычтем 25, чтобы подогнать по высоте.)
+            c.fillStyle = "green"; 
+            for(let i = 0; i < data.length; i++) { 
+            let dp = data[i]; 
+            c.fillRect(35 + i*100, 500-dp*5 - 25, 50, dp*5); 
+            }
+
+// рисуем осевые линии
+            c.fillStyle = "red"; 
+            c.lineWidth = 2.0; 
+            c.beginPath(); // начинает новый путь
+            c.moveTo(25,10); // перемещает начальную точку нового фрагмента контура в координаты (x, y).
+            c.lineTo(25,475); // добавляет линию к текущему под пути с конечной точкой с координатами (x, y).
+            c.lineTo(490,475); 
+            c.stroke();// обводит текущий контур цветом 
+
+// рисуем текст и вертикальные линии
+            c.fillStyle = "black"; 
+            for(let i = 0; i < 6; i++) { 
+            c.fillText((5 - i) * 20 + "", 4 , i * 80 + 75); // рисует заданный текст в заданной позиции (x, y). Если указан необязательный четвёртый параметр, текст будет масштабироваться в соответствии с указанной максимальной шириной.
+            c.beginPath(); 
+            c.moveTo(25, i * 80 + 75); 
+            c.lineTo(30, i * 80 + 75); 
+            c.stroke(); 
+            }
+
+            const labels = ["JAN","FEB","MAR","APR","MAY"]; 
+// выводим текст
+            for(let i = 0; i < 5; i++) { 
+            c.fillText(labels[i], 50 + i * 100, 495); 
+            }
+
+        </script> 
+
+        </section>
+ <!--круговая диаграмма-->
+ <section>
+    <h2>Круговая диаграмма</h2>
+    <canvas width="500" height="500" id="canvas1"></canvas> 
+  <script> 
+    // инициализация набора данных
+    const data1 = [ 100, 68, 20, 30, 100 ]; 
+    const canvas1 = document.getElementById('canvas1');  // получаем указатель на холст
+    let d = canvas1.getContext('2d'); // возвращает контекст рисования на холсте
+    // рисуем фон
+    d.fillStyle = "white"; 
+    d.fillRect(0,0,500,500); 
+  
+    // список цветов
+    const colors = [ "orange", "green", "blue", "yellow", "pink"]; 
+  
+  // вычисляем сумму всех данных
+    let total = 0; 
+     for(let i = 0; i < data1.length; i++) { 
+    total += data1[i]; 
+  }
+  
+  // рисуем круговые данные
+    let prevAngle = 0; 
+    for(let i = 0; i < data1.length; i++) { 
+  // доля, представленная сегментом (для радианы)
+    let fraction = data1[i]/total; 
+  // вычисляем начальный угол (2Pi - окружность)
+    const angle = prevAngle + fraction * Math.PI * 2; 
+  
+  // рисуем сегмент
+//   d.fillStyle = colors[i]; 
+  
+// заливаем радиальным градиентом
+let grad = d.createRadialGradient( 250,250, 10, 250,250, 100); 
+grad.addColorStop(0,"white"); 
+grad.addColorStop(1,colors[i]); 
+d.fillStyle = grad;
+
+
+  // создаём контур
+  d.beginPath(); // начинает новый путь
+  d.moveTo(250,250); 
+  d.arc(250,250, 100, prevAngle, angle, false); 
+//   добавляет дугу к пути с центром (x, y) и с радиусом r с началом в 
+//   startAngle и с концом endAngle и с направлением против часовой стрелки 
+//   (по умолчанию по часовой стрелке).
+// Синтаксис: void ctx.arc(x, y, radius, startAngle, endAngle, anticlockwise);
+  d.lineTo(250,250); // добавляет линию к текущему под пути с конечной точкой с координатами (x, y)
+  
+  // заливаем его
+  d.fill(); 
+  
+  // обводим его
+  d.strokeStyle = "brown"; 
+  d.stroke(); 
+  
+  // обновляем для следующей итерации цикла
+  prevAngle = angle; 
+}
+
+// рисуем текст по центру
+    d.fillStyle = "black"; 
+    d.font = "24pt sans-serif"; 
+    const text = "Sales Data from 2025"; 
+    const metrics = d.measureText(text); //возвращает объект TextMetrics (en-US), содержащий информацию об измеренном тексте (например, ширину)
+    d.fillText(text, 250-metrics.width/2, 400); //рисует (заливает) заданный текст в заданной позиции (x, y). Если указан необязательный четвёртый параметр, текст будет масштабироваться в соответствии с указанной максимальной шириной.
+
+  </script>
+
+ </section>
+ <!-- Изменяемая гистограмма -->
+ <section>
+<h2>Изменяемая гистограмма</h2>
+<div class="chart">
+<h1 class="chart__title">Популярность языков программирования</h1>
+<form class="chart__data" action="#" method="POST">
+    <div class="chart__input-group">
+      <label class="chart__label" for="javascript">JavaScript</label>
+      <input class="chart__input input-field" type="number" name="javascript" id="javascript" min="0" max="100" required>
+      <span>%</span>
+    </div>
+
+    <div class="chart__input-group">
+      <label class="chart__label" for="php">PHP</label>
+      <input class="chart__input input-field" type="number" name="php" id="php" min="0" max="100" required>
+      <span>%</span>
+    </div>
+
+    <div class="chart__input-group">
+      <label class="chart__label" for="python">Python</label>
+      <input class="chart__input input-field" type="number" name="python" id="python" min="0" max="100" required>
+      <span>%</span>
+    </div>
+
+    <input class="chart__submit-button input-field" type="submit" value="Показать график">
+  </form>
+
+  <div class="chart__canvas-wrapper">
+    <canvas id="canvas2" width="500" height="250">Браузер не поддерживает Canvas</canvas>
+  </div>
+</div>  
+<script> 
+/*1*/ const colors1 = [`#b3d5fc`,`#98d9d9`,`#ede493`];
+
+/*3*/ const maxPercentage = 100;
+
+const BarSize = {
+  MAX_HEIGHT: 190,
+  WIDTH: 50
+};
+
+const BarCoordinate = {
+  INITIAL_X: 80,
+  INITIAL_Y: 220
+}
+
+const Font = {
+  SIZE: `18px`,
+  FAMILY: `Tahoma`
+};
+
+const LabelCoordinate = {
+  INITIAL_X: 30,
+  INITIAL_Y: 70
+}
+
+const Gap = {
+  HORIZONTAL: 100,
+  VERTICAL: 30
+}
+
+/*1*/  const inputElements = document.querySelectorAll(`.chart__input`); 
+        const inputElements = formElement.querySelectorAll(`.chart__input`);
+/*1*/  const getData = (inputElements) => {
+/*1*/   return Array.from(inputElements).map((input, index) => ({
+/*1*/     name: input.name,
+/*1*/     value: input.value,
+/*1*/     color: colors1[index]
+/*1*/   }));
+/*1*/ };
+/*1*/ const items = getData(inputElements);
+
+/*2*/ const canvas2 = document.querySelector(`#canvas`);
+/*2*/ const ctx = canvas2.getContext(`2d`);
+
+// Получаем на вход items — массив объектов с данными
+/*4*/const renderChart = (items) => {
+  // Очищаем всю область холста
+/*4*/  ctx.clearRect(0, 0, canvas2.width, canvas2.height);
+// Задаём координаты для первого столбца и подписи
+let currentBarX = BarCoordinate.INITIAL_X;
+  let currentLabelY = LabelCoordinate.INITIAL_Y;
+    // Определяем горизонтальный отступ между соседними столбцами
+    const gapBetweenBars = BarSize.WIDTH + Gap.HORIZONTAL;
+
+  // Проходим в цикле по каждому объекту в массиве с данными
+  // Для каждого будет нарисован отдельный столбец
+  for (const item of items) {
+    // Вычисляем высоту столбца с учётом процентов из данных
+    const barHeight = (item.value * BarSize.MAX_HEIGHT) / MAX_PERCENTAGE;
+
+    // Задаём цвет заливки любых элементов, которые будут создаваться дальше
+    ctx.fillStyle = item.color;
+    // Задаём параметры шрифта
+    ctx.font = `${Font.SIZE} ${Font.FAMILY}`;
+    // Запоминаем текущие параметры холста
+    ctx.save();
+    // Сдвигаем начало коодинат вниз по оси y на величину canvas.height
+    ctx.translate(0, canvas2.height);
+    // Поворачиваем систему координат на 90 градусов против часовой стрелки
+    // Math.PI/2 — перевод 90 градусов в радианы
+    ctx.rotate(-Math.PI/2);
+    // В изменённой системе координат рисуем текст снизу вверх
+    ctx.fillText(item.name.toUpperCase(), LabelCoordinate.INITIAL_X, currentLabelY);
+    // Возвращаемся к изначальной системе координат
+    ctx.restore();
+    // Рисуем столбец
+    // Отрицательное значение — отрисовка снизу вверх
+    ctx.fillRect(currentBarX, BarCoordinate.INITIAL_Y, BarSize.WIDTH, -barHeight);
+
+    // Для следующего столбца обновляем координаты с учётом отступа
+    currentBarX += gapBetweenBars;
+    currentLabelY += gapBetweenBars;
+  }
+};
+const formElement = document.querySelector(`.chart__data`);
+
+formElement.addEventListener(`submit`, (evt) => {
+  // Отменяем действие по умолчанию — отправку формы на сервер (которого нет)
+  evt.preventDefault();
+
+  // Отрисовываем график
+  renderChart(getData(inputElements));
+  // Сбрасываем значения полей ввода
+  formElement.reset();
+});
+
+</script> 
+ </section>
+    </main>
+    <!-- подвал страницы -->
+    <footer  class="footer">
+
+    </footer>
+</body>
+</html>
+
