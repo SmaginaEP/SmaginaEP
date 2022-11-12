@@ -329,6 +329,21 @@ formElement1.addEventListener(`submit`, (evt) => {
 
 </script>  -->
  <!-- </section> -->
+
+ <!-- кнопка для localStorage -->
+ <div>
+  <button class="ls">жми
+  </button>
+</div>
+
+<script>
+  let count = 0
+  document.querySelector('.ls').onclick = () => {
+      count++
+      localStorage.setItem('b1', count);
+  }
+</script>
+
     </main>
     <!-- подвал страницы -->
     <footer  class="footer">

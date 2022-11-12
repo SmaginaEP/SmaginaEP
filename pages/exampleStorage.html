@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- голова html-страницы, её содержимое не видно -->
+    <meta charset="UTF-8"> <!-- Атрибут charset Указывает кодировку документа -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Этот атрибут определяет имя уровня документа метаданных -->
+    <title>Задание JS</title> <!-- название страницы -->
+    <link rel="stylesheet" href="../style/style.css"> <!-- стили -->
+    <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet"> 
+
+    <style>
+       
+    main {
+    background: var(--background-color);
+    color: var(--text-color);
+    }
+
+    button {
+        color: var(--background-color-dark);
+    }
+
+    body.theme-dark {
+    --background-color: var(--background-color-dark);
+    --text-color: var(--akcent-color);
+}
+
+    @media (prefers-color-scheme: dark) {
+    body.theme-auto {
+        --background-color: var(--background-color-dark);
+        --text-color: var(--akcent-color);
+    }
+    }   
+    </style>
+
+</head>
+<body>
+    <header class="header">
+        <div class="menu">
+        </div>
+
+    <!-- заголовок сайта -->
+        <div  class="title">
+            <h1>примеры c localStorage</h1> 
+        </div>
+    </header>
+    <main>
+    
+        <!-- примеры c localStorage -->
+        <section>
+            <script>
+                //Добавляем или изменяем значение:
+            localStorage.setItem('data',5);
+            localStorage.setItem('data1',6);
+            //Выводим его в консоль:
+            console.log(localStorage.getItem('data'));
+            //удаляем:
+            localStorage.removeItem('data');
+            // //очищаем все хранилище
+            // localStorage.clear();
+            </script>
+
+            <script>
+            const a = [3,8,5,9];
+            localStorage.setItem('a', a);
+            let b = localStorage.getItem('a');
+            console.log(b);
+            console.log(b[0]);
+
+            console.log(typeof b);
+            localStorage.setItem('a',JSON.stringify(a));
+           
+            b = JSON.parse(localStorage.getItem('a'));
+            console.log(b[1]);
+            console.log(typeof b);
+            </script>
+
+            <script>
+                localStorage["Ключ"] = "Значение" //установка значения
+                localStorage["Ключ"] // Получение значения
+                delete localStorage["Ключ"] // Удаление значения
+            </script>
+
+            <script>
+                const c = {
+            hello:5, 
+            k:2,
+            4:'hi'};
+        // localStorage.setItem('c',c);
+        // console.log(typeof c);
+        localStorage.setItem('c',JSON.stringify(c));
+        let d = localStorage.getItem('c');
+        d = JSON.parse(d);
+        console.log(d);
+        console.log(typeof d);
+            </script>
+
+            <script>
+        window.addEventListener('storage',function(e){
+        console.log('change');
+        });
+            </script>
+
+    <!--пример sessionStorage-->
+    <script>
+    sessionStorage.setItem('name',123);
+    const f = sessionStorage.getItem('name');
+    console.log(name);
+</script>
+<h1>удаление sessionStorage</h1>
+<div>
+    <button id="removebtn" >удалить</button>
+    <div ></div>
+</div>
+<script>
+sessionStorage.setItem('name',5456);
+const f1 = sessionStorage.getItem('name');
+document.querySelector("#removebtn").onclick = () => {
+    sessionStorage.removeItem('name');  
+}
+console.log(name);
+</script>
+        </section>
+
+<!-- пример сохраняющегося после перезагрузки содержимого -->
+<section>
+    <br><br>
+    <textarea name="" id="textArea" cols="30" rows="15"></textarea><br>
+    <button onclick="localStorage.removeItem('savetext');textArea.value=''">Очистить</button>
+    
+                
+     <script>
+        document.getElementById('textArea').oninput=function text(){
+        // alert(textArea.value);
+        localStorage.setItem('savetext', document.getElementById('textArea').value);
+        // console.log(localStorage.getItem('savetext'));
+        }
+        document.getElementById('textArea').value = localStorage.getItem('savetext');
+    </script>
+</section>
+     
+<!-- переключение темы -->
+<section>
+    <div>Выберете тему:</div>
+     <select name="" id="theme">
+     <option value="auto">по умолчанию</option>
+     <option value="light">светлая</option>
+     <option value="dark">тёмная</option>
+     </select>
+     <script>
+     function applyTheme(theme){
+     document.body.classList.remove("theme-auto", "theme-light", "theme-dark");
+     document.body.classList.add(`theme-${theme}`);
+     }
+     document.addEventListener("DOMContentLoaded", ()=>{
+     document.querySelector("#theme").addEventListener("change", function(){applyTheme(this.value);});});
+     document.addEventListener("DOMContentLoaded", () => {
+         const savedTheme = localStorage.getItem("theme") || "auto";
+         applyTheme(savedTheme);
+         for (const optionElement of document.querySelectorAll("#theme option")){
+             optionElement.selected = savedTheme === optionElement.value;
+         }
+         document.querySelector("#theme").addEventListener("change", function(){
+         localStorage.setItem("theme", this.value);
+         applyTheme (this.value);})
+     })
+     </script>
+</section>
+
+<!-- пример списка задач -->
+    <section>
+        <div class="small-container">
+            <h1>новая задача</h1>
+        <form>
+            <input id="item" type="text" placeholder="новый пункт" required />
+        </form>
+            <h2>задача</h2>
+            <ul></ul>
+            <button id ='button'>Очистить</button>
+          </div> 
+
+    <script>
+const form = document.querySelector('form');
+const ul = document.querySelector('ul');
+const button = document.getElementById('button');
+const input = document.getElementById('item');
+let itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+
+localStorage.setItem('items', JSON.stringify(itemsArray));
+const data = JSON.parse(localStorage.getItem('items'));
+
+const liMaker = (text) => {
+  const li = document.createElement('li');
+  li.textContent = text;
+  ul.appendChild(li);
+}
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+
+  itemsArray.push(input.value);
+  localStorage.setItem('items', JSON.stringify(itemsArray));
+  liMaker(input.value);
+  input.value = "";
+});
+
+data.forEach(item => {
+  liMaker(item);
+});
+
+button.addEventListener('click', function () {
+  localStorage.clear();
+  while (ul.firstChild) {
+    ul.removeChild(ul.firstChild);
+  }
+  itemsArray = [];
+});
+    </script>
+    </section>
+    </main>
+    <!-- подвал страницы -->
+    <footer  class="footer">
+
+    </footer>
+</body>
+</html>
+
