@@ -289,9 +289,10 @@ const form = document.querySelector('.form');
 const ul = document.querySelector('.ul');
 const button = document.getElementById('button');
 const input = document.getElementById('item');
-
+// 6
 let itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
-
+// 4
+// let itemsArray = [];
 localStorage.setItem('items', JSON.stringify(itemsArray));
 const data = JSON.parse(localStorage.getItem('items'));
 // 2
@@ -303,23 +304,24 @@ ul.appendChild(li);
 // 3
 form.addEventListener('submit', function (e) {
 e.preventDefault();
-
+// 5
 itemsArray.push(input.value);
 localStorage.setItem('items', JSON.stringify(itemsArray));
 // 3
 liMaker(input.value);
 input.value = "";
 });
-
+// 6
 data.forEach(item => {
 liMaker(item);
 });
-
+// 7
 button.addEventListener('click', function () {
 localStorage.clear();
 while (ul.firstChild) {
 ul.removeChild(ul.firstChild);
 }
+
 itemsArray = [];
 });
 </script>
