@@ -65,7 +65,29 @@ if(fail == ""){
 }
 
     </script>
-
+    <style>
+       /* для переключения темы */
+        main {
+        background: var(--background-color);
+        color: var(--text-color);
+        }
+    
+        button {
+            color: var(--background-color-dark);
+        }
+    
+        body.theme-dark {
+        --background-color: var(--background-color-dark);
+        --text-color: var(--akcent-color);
+    }
+    
+        @media (prefers-color-scheme: dark) {
+        body.theme-auto {
+            --background-color: var(--background-color-dark);
+            --text-color: var(--akcent-color);
+        }
+        }   
+        </style>
 </head>
 <body>
     <header class="header">
@@ -95,6 +117,32 @@ if(fail == ""){
         </div>
     </header>
     <main>
+        <section>
+            <div>Выберете тему:</div>
+             <select name="" id="theme">
+             <option value="auto">по умолчанию</option>
+             <option value="light">светлая</option>
+             <option value="dark">тёмная</option>
+             </select>
+             <script>
+             function applyTheme(theme){
+             document.body.classList.remove("theme-auto", "theme-light", "theme-dark");
+             document.body.classList.add(`theme-${theme}`);
+             }
+             document.addEventListener("DOMContentLoaded", ()=>{
+             document.querySelector("#theme").addEventListener("change", function(){applyTheme(this.value);});});
+             document.addEventListener("DOMContentLoaded", () => {
+                 const savedTheme = localStorage.getItem("theme") || "auto";
+                 applyTheme(savedTheme);
+                 for (const optionElement of document.querySelectorAll("#theme option")){
+                     optionElement.selected = savedTheme === optionElement.value;
+                 }
+                 document.querySelector("#theme").addEventListener("change", function(){
+                 localStorage.setItem("theme", this.value);
+                 applyTheme (this.value);})
+             })
+             </script>
+        </section>
     <div class="grid">
         <!--форма-->
         <section>
@@ -155,8 +203,6 @@ if(fail == ""){
             </form>
             </div>
         </section>
-        <!--галерея по щелчку выбор миниатюры-->
-        <section>
            <!--галерея 1 слайдер-->
         <section>
             <h2>Галерея</h2>
@@ -208,6 +254,76 @@ if(fail == ""){
             });
                 </script>
         </section>
+        <!-- пример сохраняющегося после перезагрузки содержимого -->
+<section>
+    <div class="items">
+    <textarea name="" id="textArea" cols="30" rows="15"></textarea><br>
+    <button onclick="localStorage.removeItem('savetext');textArea.value=''">Очистить</button>
+    </div>
+                
+     <script>
+        document.getElementById('textArea').oninput=function text(){
+        // alert(textArea.value);
+        localStorage.setItem('savetext', document.getElementById('textArea').value);
+        // console.log(localStorage.getItem('savetext'));
+        }
+        document.getElementById('textArea').value = localStorage.getItem('savetext');
+    </script>
+</section>
+
+<!-- пример списка задач -->
+<section>
+    <div class="items">
+        <h1>новая задача</h1>
+    <form class="form">
+        <input id="item" type="text" placeholder="новый пункт" required />
+    </form>
+        <h2>задача</h2>
+        <ul class="ul"></ul>
+        <button id ='button'>Очистить</button>
+      </div> 
+
+<script>
+    // 1
+const form = document.querySelector('.form');
+const ul = document.querySelector('.ul');
+const button = document.getElementById('button');
+const input = document.getElementById('item');
+
+let itemsArray = localStorage.getItem('items') ? JSON.parse(localStorage.getItem('items')) : [];
+
+localStorage.setItem('items', JSON.stringify(itemsArray));
+const data = JSON.parse(localStorage.getItem('items'));
+// 2
+const liMaker = (text) => {
+const li = document.createElement('li');
+li.textContent = text;
+ul.appendChild(li);
+}
+// 3
+form.addEventListener('submit', function (e) {
+e.preventDefault();
+
+itemsArray.push(input.value);
+localStorage.setItem('items', JSON.stringify(itemsArray));
+// 3
+liMaker(input.value);
+input.value = "";
+});
+
+data.forEach(item => {
+liMaker(item);
+});
+
+button.addEventListener('click', function () {
+localStorage.clear();
+while (ul.firstChild) {
+ul.removeChild(ul.firstChild);
+}
+itemsArray = [];
+});
+</script>
+</section>
     </div>
     </main>
     <!-- подвал страницы -->

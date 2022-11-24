@@ -370,6 +370,7 @@ button {
 
 button:hover {
     background: var(--background-color);
+    color: var(--text-color);
 }
 
 button:active {
