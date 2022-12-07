@@ -143,12 +143,12 @@ if(fail == ""){
              })
              </script>
         </section>
-    <div class="grid">
+    <div class="grid1">
         <!--форма-->
-        <section>
+        <section class="items1">
             <h2>Форма</h2>
-            <div class="items">
-            <form action="" method="get" id="form1" onsubmit="return checkForm(this)">
+            <div>
+            <form class="form" action="" method="get" id="form1" onsubmit="return checkForm(this)">
                 <fieldset class="form-div" id="svaz1">
                     <legend>Как Вам удобно получить ответ:</legend>
                     <label for=""><input type="radio" name="svaz" id="posta" value="по почте" > по почте </label><br>
@@ -190,7 +190,7 @@ if(fail == ""){
                 <div class="form-div">
                     <div>Ваш вопрос:</div> 
                     <div>
-                        <textarea cols="30" placeholder="Введите вопрос">
+                        <textarea cols="40" placeholder="Введите вопрос">
                         </textarea>
                     </div>
                 </div>
@@ -203,10 +203,90 @@ if(fail == ""){
             </form>
             </div>
         </section>
+
+        <!-- таймер -->
+        <section class="items1">
+            <h2>Таймер</h2>
+            <div class="countdown-wrapper">
+                <h1 class="title1">до Нового Года осталось:</h1>
+                <div id="year" class="year"></div>
+                <div class="countdown" id=countdown>
+                    <div class="time">
+                        <h2 id="days">00</h2>
+                        <small>дней</small>
+                    </div>
+                    <div class="time">
+                        <h2 id="hours">00</h2>
+                        <small>часов</small>
+                    </div>
+                    <div class="time">
+                        <h2 id="minutes">00</h2>
+                        <small>минут</small>
+                    </div>
+                    <div class="time">
+                        <h2 id="seconds">00</h2>
+                        <small>секунд</small>
+                    </div>
+                </div>
+                <div class="preloader" id="preloader">
+                    <div class="lds-ripple"><div></div><div></div></div>
+                </div>
+            </div>
+                
+        <script>
+            // Определяем действующие элементы на странице
+            const year = document.querySelector('#year');
+            const days = document.querySelector('#days');
+            const hours = document.querySelector('#hours');
+            const minutes = document.querySelector('#minutes');
+            const seconds = document.querySelector('#seconds');
+            const countdown = document.querySelector('#countdown');
+            const preloader = document.querySelector('#preloader');
+
+            // Делаем расчеты
+const currentYear = new Date().getFullYear(); // 2020
+const nextYear = new Date(`January 01 ${currentYear + 1} 00:00:00`);
+
+// Устанавливаем год на страницу
+year.innerText = currentYear + 1;
+
+function updateCounter() {
+	
+	const currentTime = new Date();
+	const diff = nextYear - currentTime;
+
+	// Перевод в дни
+	const daysLeft = Math.floor(diff / 1000 / 60 / 60 / 24);
+	// Часов всего, далее остаток от деления на 24 (преобразования в дни), получаем 8 часов
+	const hoursLeft = Math.floor(diff / 1000 / 60 / 60) % 24;
+	// Минут всего, далее остаток от преобразования в часы, минут осталось
+	const minutesLeft = Math.floor(diff / 1000 / 60) % 60;
+	// Секунд всего, далее остаток от преобразования в минуты, секунд осталось
+	const secondsLeft = Math.floor(diff / 1000) % 60;
+
+	console.log(daysLeft, hoursLeft, minutesLeft, secondsLeft);
+
+	days.innerText = daysLeft;
+	hours.innerText = hoursLeft < 10 ? '0' + hoursLeft : hoursLeft;
+	minutes.innerText = minutesLeft < 10 ? '0' + minutesLeft : minutesLeft;
+	seconds.innerText = secondsLeft < 10 ? '0' + secondsLeft : secondsLeft;
+}
+
+// Запускаем расчет 1 раз в секунду (каждую секунду)
+setInterval(updateCounter, 1000);
+
+// setTimeout(function () {
+//     preloader.remove();
+//     countdown.style.display = 'flex';
+// }, 1000);
+        </script>
+        </section>
+
            <!--галерея 1 слайдер-->
-        <section>
+        <section class="items1">
             <h2>Галерея</h2>
-            <div class="container">
+            <div>
+            <div>
                 <div class="slider">
                     <div class="slider-line">
                         <img src="../img/1.jpg"  class="mini" alt="">
@@ -253,10 +333,12 @@ if(fail == ""){
                 sliderLine.style.left = -offset + 'px';
             });
                 </script>
+                </div>
         </section>
         <!-- пример сохраняющегося после перезагрузки содержимого -->
-<section>
-    <div class="items">
+<section  class="items1">
+    <h2>Сохранение текста</h2>
+    <div>
     <textarea name="" id="textArea" cols="30" rows="15"></textarea><br>
     <button onclick="localStorage.removeItem('savetext');textArea.value=''">Очистить</button>
     </div>
@@ -272,20 +354,21 @@ if(fail == ""){
 </section>
 
 <!-- пример списка задач -->
-<section>
-    <div class="items">
-        <h1>новая задача</h1>
-    <form class="form">
+<section class="items1">
+    <h2>Список задач</h2>
+    <div>
+        <h3>новая задача</h3>
+    <form class="form1">
         <input id="item" type="text" placeholder="новый пункт" required />
     </form>
-        <h2>задача</h2>
+        <h3>задача</h3>
         <ul class="ul"></ul>
         <button id ='button'>Очистить</button>
       </div> 
 
 <script>
     // 1
-const form = document.querySelector('.form');
+const form = document.querySelector('.form1');
 const ul = document.querySelector('.ul');
 const button = document.getElementById('button');
 const input = document.getElementById('item');
